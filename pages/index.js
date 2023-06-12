@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.scss';
+import styles from '../styles/home.module.scss';
 import Dashboard from 'components/dashboard'
 
 export default function Home() {
