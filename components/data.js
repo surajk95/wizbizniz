@@ -1,7 +1,7 @@
 export const channelList = [
     'anirudhofficial',
     // 'buggs',
-    'channel5youtube',
+    // 'channel5youtube',
     // 'charlottedobre',
     // 'geohotarchive',
     // 'joerogan',
