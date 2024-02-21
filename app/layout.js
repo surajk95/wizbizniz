@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "wizbizniz",
-  description: "Dashboard made from my favorite youtubers' channels",
+  description: "Dashboard of my favorite youtubers' channels",
 };
 
 export default function RootLayout({ children }) {
