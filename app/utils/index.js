@@ -1,4 +1,4 @@
-export default function extractFeatures(data = []) {
+export function extractFeatures(data = []) {
     let totalViews = 0,
     averageViews = 0,
     totalDuration = 0,
@@ -23,4 +23,21 @@ export default function extractFeatures(data = []) {
         averageDuration,
         mostPopular,
     }
+}
+
+export function viewsByYear(data = []) {
+    const processedData = {}
+ for(let video of data) {
+    const year = new Date(video?.date).getFullYear()
+    processedData[year] = (processedData[year] || 0) + video?.views
+ }
+ const output = []
+ for(let [key, value] of Object.entries(processedData)) {
+    output.push({
+        date: key,
+        views: value,
+    })
+ }
+ console.log(`zzz returning`, output)
+ return output
 }

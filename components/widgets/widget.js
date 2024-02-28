@@ -1,4 +1,6 @@
+import { Card } from "@tremor/react"
 import MetricWidget from "./metric"
+import LineWidget from "./line"
 
 export default function Widget(props) {
     const {
@@ -10,11 +12,11 @@ export default function Widget(props) {
         children,
     } = props
     return (
-        <div
+        <Card
             className="widget m-2"
             style={{
                 flexBasis: width,
-                height: height,
+                height,
             }}
         >
         {
@@ -22,9 +24,17 @@ export default function Widget(props) {
             <MetricWidget title={title} data={data} />
         }
         {
-            type === 'custom' &&
-            <>{children}</>
+            type === 'line' &&
+            <LineWidget title={title} data={data} />
         }
-        </div>
+        {
+            type === 'custom' &&
+            <>
+                {title}
+                <br/>
+                {children}
+            </>
+        }
+        </Card>
     )
 }

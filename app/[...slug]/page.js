@@ -1,7 +1,7 @@
 'use client'
 import { useChannelStore } from "@/components/store"
 import Widget from "@/components/widgets/widget"
-import extractFeatures from "../utils"
+import { extractFeatures, viewsByYear } from "../utils"
 
 export default function Page(props) {
     const slug = String(props.params?.slug).replace('%40', '').toLowerCase()
@@ -25,31 +25,31 @@ export default function Page(props) {
             <div className="w-full flex flex-row flex-wrap">
                 <Widget
                     type="metric"
-                    width="20%"
+                    width="17%"
                     title="Total subscribers"
                     data={meta?.subscriber_count}
                 /> 
                 <Widget
                     type="metric"
-                    width="20%"
+                    width="17%"
                     title="Total views"
                     data={totalViews}
                 /> 
                 <Widget
                     type="metric"
-                    width="20%"
+                    width="17%"
                     title="Avg views"
                     data={averageViews}
                 /> 
                 <Widget
                     type="metric"
-                    width="20%"
-                    title="videos"
+                    width="17%"
+                    title="Videos"
                     data={meta?.videos_count}
                 />
                 <Widget
                     type="metric"
-                    width="20%"
+                    width="17%"
                     title="Average video length"
                     data={averageDuration}
                 /> 
@@ -61,6 +61,13 @@ export default function Page(props) {
                 >
                     {mostPopular?.title} 
                 </Widget>
+                <Widget
+                    type="line"
+                    width="50%"
+                    height="400px"
+                    title="Total views"
+                    data={viewsByYear(pageData?.data)}
+                />
             </div>
         </div>
     )
