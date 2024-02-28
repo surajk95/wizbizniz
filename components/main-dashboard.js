@@ -1,11 +1,13 @@
-'use client'
+"use client";
 import { useChannelStore } from "@/components/store";
+import Widget from "./widgets/widget";
+import { extractGlobalFeatures } from "@/app/utils";
 
 export default function MainDashboard() {
   const channelData = useChannelStore((state) => state.channelData);
   console.log(`zzz main dash`, channelData);
   return (
-    <div className="z-10 flex max-w-5xl w-full font-sans text-sm">
+    <div className="max-w-5xl w-full p-12 font-sans">
       {channelData && (
         <div className=" flex-row items-center justify-center p-12">
           <h3>Channels</h3>
@@ -36,6 +38,16 @@ export default function MainDashboard() {
           ))}
         </div>
       )}
+      <div className="w-full flex flex-row flex-wrap justify-between">
+        <Widget
+          type="bar-list"
+          width="47%"
+          height="300px"
+          title="Channels by subscribers"
+          data={extractGlobalFeatures(channelData)}
+          category={"Subscribers"}
+        />
+      </div>
     </div>
   );
 }

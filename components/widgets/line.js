@@ -1,11 +1,8 @@
+import { valueFormatter } from '@/app/utils';
 import { LineChart } from '@tremor/react';
 
-const valueFormatter = function (number) {
-  return new Intl.NumberFormat('us').format(number).toString();
-};
 
-
-export default function LineWidget({ title, data }) {
+export default function LineWidget({ title, data, categories }) {
   return (
     <>
       <h3 className="text-lg font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">{title}</h3>
@@ -14,8 +11,8 @@ export default function LineWidget({ title, data }) {
         data={data}
         index="date"
         yAxisWidth={75}
-        categories={['views']}
-        colors={['indigo']}
+        categories={categories}
+        colors={['indigo', 'cyan']}
         valueFormatter={valueFormatter}
       />
     </>

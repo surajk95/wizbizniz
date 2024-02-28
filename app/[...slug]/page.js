@@ -1,7 +1,7 @@
 'use client'
 import { useChannelStore } from "@/components/store"
 import Widget from "@/components/widgets/widget"
-import { extractFeatures, viewsByYear } from "../utils"
+import { extractChannelFeatures, valueFormatter, viewsByYear } from "../utils"
 
 export default function Page(props) {
     const slug = String(props.params?.slug).replace('%40', '').toLowerCase()
@@ -14,7 +14,7 @@ export default function Page(props) {
         averageViews,
         averageDuration,
         mostPopular,
-    } = extractFeatures(data)
+    } = extractChannelFeatures(data)
 
     return (
         <div className="w-full p-12">
@@ -22,51 +22,59 @@ export default function Page(props) {
             <h2>{meta?.channel_handle}</h2>
             <h3>{meta?.tagline}</h3>
             <h4>Last Updated: {(new Date(lastUpdated).toLocaleDateString('en-US'))}</h4>
-            <div className="w-full flex flex-row flex-wrap">
+            <div className="w-full flex flex-row flex-wrap justify-between">
                 <Widget
                     type="metric"
                     width="17%"
                     title="Total subscribers"
-                    data={meta?.subscriber_count}
+                    data={valueFormatter(meta?.subscriber_count)}
                 /> 
                 <Widget
                     type="metric"
                     width="17%"
                     title="Total views"
-                    data={totalViews}
+                    data={valueFormatter(totalViews)}
                 /> 
                 <Widget
                     type="metric"
                     width="17%"
                     title="Avg views"
-                    data={averageViews}
+                    data={valueFormatter(averageViews)}
                 /> 
                 <Widget
                     type="metric"
                     width="17%"
                     title="Videos"
-                    data={meta?.videos_count}
+                    data={valueFormatter(meta?.videos_count)}
                 />
                 <Widget
                     type="metric"
                     width="17%"
                     title="Average video length"
-                    data={averageDuration}
+                    data={valueFormatter(averageDuration)}
                 /> 
                 <Widget
                     type="custom"
                     width="100%"
                     title="Most popular video"
-                    data={averageDuration}
                 >
                     {mostPopular?.title} 
                 </Widget>
                 <Widget
                     type="line"
-                    width="50%"
+                    width="47%"
                     height="400px"
                     title="Total views"
                     data={viewsByYear(pageData?.data)}
+                    categories={['Total views']}
+                />
+                <Widget
+                    type="line"
+                    width="47%"
+                    height="400px"
+                    title="Average views"
+                    data={viewsByYear(pageData?.data)}
+                    categories={['Average views']}
                 />
             </div>
         </div>
