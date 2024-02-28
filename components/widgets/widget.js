@@ -2,6 +2,7 @@ import { Card } from "@tremor/react"
 import MetricWidget from "./metric"
 import LineWidget from "./line"
 import BarListWidget from "./bar-list"
+import DonutWidget from "./donut"
 
 export default function Widget(props) {
     const {
@@ -32,6 +33,10 @@ export default function Widget(props) {
         {
             type === 'bar-list' &&
             <BarListWidget title={title} data={data} {...rest} />
+        }
+                {
+            type === 'donut' &&
+            <DonutWidget title={title} data={data} {...rest} />
         }
         {
             type === 'custom' &&

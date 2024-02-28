@@ -2,10 +2,13 @@
 import { useChannelStore } from "@/components/store";
 import Widget from "./widgets/widget";
 import { extractGlobalFeatures } from "@/app/utils";
+import { useMemo } from "react";
 
 export default function MainDashboard() {
   const channelData = useChannelStore((state) => state.channelData);
-  console.log(`zzz main dash`, channelData);
+  const globalFeatures = useMemo(() => extractGlobalFeatures(channelData), [channelData]);
+  console.log(`zzz main dash`, channelData, globalFeatures);
+
   return (
     <div className="max-w-5xl w-full p-12 font-sans">
       {channelData && (
@@ -41,11 +44,41 @@ export default function MainDashboard() {
       <div className="w-full flex flex-row flex-wrap justify-between">
         <Widget
           type="bar-list"
-          width="47%"
+          width="30%"
           height="300px"
-          title="Channels by subscribers"
-          data={extractGlobalFeatures(channelData)}
+          title="Subscribers"
+          data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.subscribers}))}
           category={"Subscribers"}
+        />
+        <Widget
+          type="bar-list"
+          width="30%"
+          height="300px"
+          title="Total views"
+          data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.totalViews}))}
+          category={"Views"}
+        />
+        <Widget
+          type="bar-list"
+          width="30%"
+          height="300px"
+          title="Average views"
+          data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.averageViews}))}
+          category={"Views"}
+        />
+        <Widget
+          type="donut"
+          width="30%"
+          height="300px"
+          title="Videos uploaded"
+          data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.totalVideos}))}
+        />
+                <Widget
+          type="donut"
+          width="30%"
+          height="300px"
+          title="Avg video duration (minutes)"
+          data={extractGlobalFeatures(channelData).map(i => ({...i, value: parseInt(parseInt(i.averageDuration)/60)}))}
         />
       </div>
     </div>

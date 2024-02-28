@@ -26,6 +26,7 @@ export function extractChannelFeatures(data = []) {
         averageViews,
         averageDuration,
         mostPopular,
+        totalVideos: data.length,
     }
 }
 
@@ -56,9 +57,11 @@ export function extractGlobalFeatures(data = {}) {
         const channel = data[key]
         output.push({
             name: channel?.meta?.channel_name,
-            value: channel?.meta?.subscriber_count,
+            subscribers: channel?.meta?.subscriber_count,
             href: `https://youtube.com/${channel?.meta?.channel_handle}`,
+            ...extractChannelFeatures(channel?.data),
         })
     }
+    console.log(`zzz returning`, output)
     return output
 }
