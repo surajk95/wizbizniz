@@ -10,13 +10,13 @@ export default function Widget(props) {
         title,
         data,
         width = '100%',
-        height = '150px',
+        height = '120px',
         children,
         ...rest
     } = props
     return (
         <Card
-            className="widget m-2"
+            className="widget m-1 flex flex-col justify-center"
             style={{
                 flexBasis: width,
                 height,

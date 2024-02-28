@@ -10,7 +10,7 @@ export default function MainDashboard() {
   console.log(`zzz main dash`, channelData, globalFeatures);
 
   return (
-    <div className="max-w-5xl w-full p-12 font-sans">
+    <div className="max-w-6xl w-full p-12 font-sans">
       {channelData && (
         <div className=" flex-row items-center justify-center p-12">
           <h3>Channels</h3>
@@ -44,7 +44,7 @@ export default function MainDashboard() {
       <div className="w-full flex flex-row flex-wrap justify-between">
         <Widget
           type="bar-list"
-          width="30%"
+          width="32%"
           height="300px"
           title="Subscribers"
           data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.subscribers}))}
@@ -52,7 +52,7 @@ export default function MainDashboard() {
         />
         <Widget
           type="bar-list"
-          width="30%"
+          width="32%"
           height="300px"
           title="Total views"
           data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.totalViews}))}
@@ -60,7 +60,7 @@ export default function MainDashboard() {
         />
         <Widget
           type="bar-list"
-          width="30%"
+          width="32%"
           height="300px"
           title="Average views"
           data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.averageViews}))}
@@ -68,14 +68,14 @@ export default function MainDashboard() {
         />
         <Widget
           type="donut"
-          width="30%"
+          width="49%"
           height="300px"
           title="Videos uploaded"
           data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.totalVideos}))}
         />
                 <Widget
           type="donut"
-          width="30%"
+          width="49%"
           height="300px"
           title="Avg video duration (minutes)"
           data={extractGlobalFeatures(channelData).map(i => ({...i, value: parseInt(parseInt(i.averageDuration)/60)}))}

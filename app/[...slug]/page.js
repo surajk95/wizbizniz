@@ -25,32 +25,32 @@ export default function Page(props) {
             <div className="w-full flex flex-row flex-wrap justify-between">
                 <Widget
                     type="metric"
-                    width="17%"
+                    width="19%"
                     title="Total subscribers"
                     data={valueFormatter(meta?.subscriber_count)}
                 /> 
                 <Widget
                     type="metric"
-                    width="17%"
+                    width="19%"
                     title="Total views"
                     data={valueFormatter(totalViews)}
                 /> 
                 <Widget
                     type="metric"
-                    width="17%"
+                    width="19%"
                     title="Avg views"
                     data={valueFormatter(averageViews)}
                 /> 
                 <Widget
                     type="metric"
-                    width="17%"
+                    width="19%"
                     title="Videos"
                     data={valueFormatter(meta?.videos_count)}
                 />
                 <Widget
                     type="metric"
-                    width="17%"
-                    title="Average video length"
+                    width="19%"
+                    title="Avg video duration"
                     data={valueFormatter(averageDuration)}
                 /> 
                 <Widget
@@ -62,7 +62,7 @@ export default function Page(props) {
                 </Widget>
                 <Widget
                     type="line"
-                    width="47%"
+                    width="49%"
                     height="400px"
                     title="Total views"
                     data={viewsByYear(pageData?.data)}
@@ -70,7 +70,7 @@ export default function Page(props) {
                 />
                 <Widget
                     type="line"
-                    width="47%"
+                    width="49%"
                     height="400px"
                     title="Average views"
                     data={viewsByYear(pageData?.data)}
