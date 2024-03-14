@@ -5,47 +5,47 @@ import BarListWidget from "./bar-list"
 import DonutWidget from "./donut"
 
 export default function Widget(props) {
-    const {
-        type,
-        title,
-        data,
-        width = '100%',
-        height = '120px',
-        children,
-        ...rest
-    } = props
-    return (
-        <Card
-            className="widget m-1 flex flex-col justify-center"
-            style={{
-                flexBasis: width,
-                height,
-            }}
-        >
-        {
-            type === 'metric' &&
+  const {
+    type,
+    title,
+    data,
+    width = '100%',
+    height = '120px',
+    children,
+    ...rest
+  } = props
+  return (
+    <Card
+      className="widget m-1 flex flex-col justify-center"
+      style={{
+        flexBasis: width,
+        height,
+      }}
+    >
+      {
+        type === 'metric' &&
             <MetricWidget title={title} data={data} {...rest} />
-        }
-        {
-            type === 'line' &&
+      }
+      {
+        type === 'line' &&
             <LineWidget title={title} data={data} {...rest} />
-        }
-        {
-            type === 'bar-list' &&
+      }
+      {
+        type === 'bar-list' &&
             <BarListWidget title={title} data={data} {...rest} />
-        }
-                {
-            type === 'donut' &&
+      }
+      {
+        type === 'donut' &&
             <DonutWidget title={title} data={data} {...rest} />
-        }
-        {
-            type === 'custom' &&
+      }
+      {
+        type === 'custom' &&
             <>
-                {title}
-                <br/>
-                {children}
+              {title}
+              <br/>
+              {children}
             </>
-        }
-        </Card>
-    )
+      }
+    </Card>
+  )
 }

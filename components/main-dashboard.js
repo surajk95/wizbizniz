@@ -73,7 +73,7 @@ export default function MainDashboard() {
           title="Videos uploaded"
           data={extractGlobalFeatures(channelData).map(i => ({...i, value: i.totalVideos}))}
         />
-                <Widget
+        <Widget
           type="donut"
           width="49%"
           height="300px"
